@@ -124,8 +124,6 @@ void generate_samples(chanend c_spdif, chanend c_adat, chanend c_in)
     outuint(c_adat, adatMultiple);
     outuint(c_adat, adatSmuxMode);
 
-    printintln(adatSmuxMode);
-
     unsafe
     {
         volatile unsigned * unsafe samplePtr = (unsigned * unsafe) &adatSamples;
@@ -202,11 +200,11 @@ void generate_samples(chanend c_spdif, chanend c_adat, chanend c_in)
                     {
                         /* Wait for adat to be done with previous buffer */
                         inuint(c_adat);
-                        volatile unsigned * unsafe samplePtr = (unsigned * unsafe) &adatSamples;
+                        volatile unsigned * unsafe samplePtr = (unsigned * unsafe) &adatSamplesToSend;
                         outuint(c_adat, (unsigned) samplePtr);
                     }
+                    adatCounter = 0;
                 }
-                adatCounter = 0;
 
                 break;
         }
