@@ -6,6 +6,7 @@
 *.decouple
 *.rsp
 *.build/*
+*/build*
 *.swp
 */*pca.xml
 flash_bin_node0
