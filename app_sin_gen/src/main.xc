@@ -34,7 +34,7 @@ on tile[0]: out             port    p_leds          = XS1_PORT_4F;
 
 // One cycle of full scale 24 bit sine wave in 96 samples.
 // This will produce 500Hz signal at Fs = 48kHz, 1kHz at 96kHz and 2kHz at 192kHz.
-const int32_t sine_table1[96] =
+const int32_t sine_table1[] =
 {
     0x000000,0x085F21,0x10B515,0x18F8B8,0x2120FB,0x2924ED,0x30FBC5,0x389CEA,
     0x3FFFFF,0x471CEC,0x4DEBE4,0x546571,0x5A8279,0x603C49,0x658C99,0x6A6D98,
@@ -52,7 +52,7 @@ const int32_t sine_table1[96] =
 
 // Two cycles of full scale 24 bit sine wave in 96 samples.
 // This will produce 1kHz signal at Fs = 48kHz, 2kHz at 96kHz and 4kHz at 192kHz.
-const int32_t sine_table2[96] =
+const int32_t sine_table2[] =
 {
     0x000000,0x10B515,0x2120FB,0x30FBC5,0x3FFFFF,0x4DEBE4,0x5A8279,0x658C99,
     0x6ED9EB,0x7641AE,0x7BA374,0x7EE7A9,0x7FFFFF,0x7EE7A9,0x7BA374,0x7641AE,
@@ -172,7 +172,7 @@ void generate_samples(chanend c_spdif, chanend c_adat, chanend c_in)
                 // Generate a sine wave
                 int sample_l = sine_table1[i] << 8;
                 int sample_r = sine_table2[i] << 8; // Twice the frequency on right channel.
-                i = (i + 1) % SINE_TABLE_SIZE;
+                i = (i + 1) % (sizeof(sine_table1)/sizeof(sine_table1[0]));
 
                 /* Transfer S/PDIF samples */
                 spdif_tx_output(c_spdif, sample_l, sample_r);
