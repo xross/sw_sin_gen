@@ -11,3 +11,5 @@
 flash_bin_node0
 app_aud_gen/.build/pca.xml
 app_aud_gen/.build_/pca.xml
+app_sin_gen/.build/pca.xml
+app_sin_gen/.build_/pca.xml
