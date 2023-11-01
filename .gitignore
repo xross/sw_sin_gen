@@ -1,0 +1,13 @@
+*.swo
+*.xe
+*.d
+*.o
+*.pca.xml
+*.decouple
+*.rsp
+*.build/*
+*.swp
+*/*pca.xml
+flash_bin_node0
+app_aud_gen/.build/pca.xml
+app_aud_gen/.build_/pca.xml
