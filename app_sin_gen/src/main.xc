@@ -260,7 +260,6 @@ void board_setup_control(chanend c_out)
         {
             while (tmp & 0x01) {p_but :> tmp;}
             //printstr("Time to switch\n");
-            printintln(currentFreq);
             switch(currentFreq)
             {
                 case 44100:  led_flash(2); currentFreq = 48000; break;
@@ -271,6 +270,7 @@ void board_setup_control(chanend c_out)
                 case 192000: led_flash(1); currentFreq = 44100; break;
                 default:     led_flash(2); currentFreq = 48000; break;
             }
+            printintln(currentFreq);
             c_out <: currentFreq;
             delay_milliseconds(100);
         }
