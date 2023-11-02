@@ -158,7 +158,7 @@ void generate_samples(chanend c_spdif, chanend c_adat, chanend c_in)
                 outct(c_adat, XS1_CT_END);
                 outuint(c_adat, adatMultiple);
                 outuint(c_adat, adatSmuxMode);
-                printintln(adatSmuxMode);
+
                 unsafe
                 {
                     volatile unsigned * unsafe samplePtr = (unsigned * unsafe) &adatSamples;
