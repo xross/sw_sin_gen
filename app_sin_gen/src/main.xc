@@ -112,6 +112,7 @@ void generate_samples(chanend c_spdif, chanend c_adat, chanend c_in)
     app_pll_setup(currentFreq);
     spdif_tx_reconfigure_sample_rate(c_spdif, currentFreq, mclk);
 
+    printintln(currentFreq);
     int adatSmuxMode = currentFreq/44100;
     int adatMultiple = mclk/44100;
     unsigned adatSamples[8];
